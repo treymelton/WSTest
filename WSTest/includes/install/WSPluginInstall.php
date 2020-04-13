@@ -36,8 +36,8 @@
         add_option( 'WSPlugin_Activation', time(),NULL,'yes' );
       }
       if(!get_option('WS_LogFileLocation')){
-        $strLocation = WP_PLUGIN_DIR. DIRECTORY_SEPARATOR .WS_PLUGIN_NAME. DIRECTORY_SEPARATOR.'Logs';
-        add_option( 'WS_LogFileLocation', $strLocation,NULL,'yes' );
+        //set our default log file location
+        add_option( 'WS_LogFileLocation', 'Logs',NULL,'yes' );
       }
       //mark deactivation so we know we've been here if they change their mind
       if(get_option('WSPlugin_Deactivation')){
@@ -49,7 +49,7 @@
     /**
     * deactivate the plugin
     */
-    function WS_DeActivatePlugin(){
+    public static function WS_DeActivatePlugin(){
       WS_Logger::Get()->WS_LogMessage('Deactivating Plugin....',__METHOD__,__LINE__,1);
       delete_option('WSPlugin_Activation');
       add_option( 'WSPlugin_Deactivation', time(),NULL,'yes' );
@@ -59,7 +59,7 @@
     /**
     * deactivate the plugin
     */
-    function WS_UninstallPlugin(){
+    public static function WS_UninstallPlugin(){
       delete_option('WSPlugin_Deactivation');
       return TRUE;
     }

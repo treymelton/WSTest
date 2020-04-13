@@ -45,7 +45,7 @@
     public static function WS_VerifyFolder($strFolder, $boolMakeDir=FALSE){
       if(!is_dir($strFolder)){
         if($boolMakeDir){
-          return mkdir($strFolder);
+          return mkdir($strFolder, 755, TRUE);
         }
         return FALSE;//dir not exist
       }

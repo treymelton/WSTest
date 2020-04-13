@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
 * @class:WS_Logger
 * @brief: Log internal messages.
@@ -58,7 +58,7 @@
                      "[Method]: " .  $strMethod . "\r\n".
                      "[Line]: " .  $intLine . "\r\n".
                      "[".$this->arrLogType[$intType]."]:".$strError . "\r\n";
-        $strLogEntry .= $this->WS_GetLastError();
+        $strLogEntry .= $this->WS_GetLastError(). "\r\n";  
         $strLogEntry .= "\r\n###################[End Log Entry]###################\r\n ";
         return $this->WS_WriteData($this->strLogFile,$strLogEntry);
       }
@@ -81,7 +81,7 @@
         //can't log the message and the message may be sensitive so it cannot be printed on the screen
         return FALSE;
       }
-     $this->strLogFile .= DIRECTORY_SEPARATOR.'LOG_'.date('Y_m_d',time()).'.txt';
+     $this->strLogFile .= 'LOG_'.date('Y_m_d',time()).'.txt';
      return TRUE;
     }//WS_VerifyLogFile()
 
